@@ -1,6 +1,6 @@
 [package]
 name = "tce-app"
-version = "0.1.4"
+version = "0.1.5"
 description = "Estudos TCE-MA 2026 — Auditor TI (Cargo 15)"
 authors = ["André"]
 edition = "2021"
