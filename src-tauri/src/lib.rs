@@ -4,6 +4,10 @@ mod commands;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
+    // Workaround for blank screen on Wayland (Niri/Noctalia) due to EGL/DMABUF issues
+    std::env::set_var("WEBKIT_DISABLE_COMPOSITING_MODE", "1");
+    std::env::set_var("WEBKIT_DISABLE_DMABUF_RENDERER", "1");
+
     let migrations = vec![
         Migration {
             version: 1,
@@ -33,6 +37,12 @@ pub fn run() {
             version: 5,
             description: "seed_questions",
             sql: include_str!("../migrations/005_seed_questions.sql"),
+            kind: MigrationKind::Up,
+        },
+        Migration {
+            version: 6,
+            description: "import_pipeline",
+            sql: include_str!("../migrations/006_import_pipeline.sql"),
             kind: MigrationKind::Up,
         },
     ];
