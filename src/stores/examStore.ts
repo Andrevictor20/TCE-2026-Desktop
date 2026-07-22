@@ -42,7 +42,7 @@ interface ExamStore {
   history: Exam[];
   
   fetchHistory: () => Promise<void>;
-  startExam: (type: 'full' | 'quick' | 'discursive', limitMins: number, questionCount?: number) => Promise<number | null>;
+  startExam: (type: 'full' | 'quick' | 'discursive', limitMins: number, questionCount?: number, filters?: { banca?: string, orgao?: string, year?: number }) => Promise<number | null>;
   resumeExam: (examId: number) => Promise<void>;
   answerQuestion: (questionId: number, answer: string) => Promise<void>;
   answerDiscursive: (answerId: number, content: string, lineCount: number) => Promise<void>;
@@ -62,9 +62,8 @@ export const useExamStore = create<ExamStore>((set, get) => ({
     set({ history: exams });
   },
 
-  startExam: async (type, limitMins, questionCount = 100) => {
+  startExam: async (type, limitMins, questionCount = 100, filters = {}) => {
     try {
-      // Create exam record
       const res = await execute(
         `INSERT INTO exams (exam_type, started_at, time_limit_minutes, total_questions) VALUES ($1, datetime('now'), $2, $3)`,
         [type, limitMins, type === 'discursive' ? 3 : questionCount]
@@ -74,19 +73,61 @@ export const useExamStore = create<ExamStore>((set, get) => ({
       if (!examId) return null;
 
       if (type === 'discursive') {
-        // Create 3 discursive answer placeholders
         await execute(`INSERT INTO discursive_answers (exam_id, question_type, question_index, max_lines) VALUES ($1, 'peca_tecnica', 1, 60)`, [examId]);
         await execute(`INSERT INTO discursive_answers (exam_id, question_type, question_index, max_lines) VALUES ($1, 'questao_discursiva', 1, 30)`, [examId]);
         await execute(`INSERT INTO discursive_answers (exam_id, question_type, question_index, max_lines) VALUES ($1, 'questao_discursiva', 2, 30)`, [examId]);
       } else {
-        // Select random objective questions
-        const qs = await query<Question>(
-          `SELECT * FROM questions WHERE archived = 0 ORDER BY RANDOM() LIMIT $1`,
-          [questionCount]
+        // Smart Selection 40% CG, 60% CE based on edital
+        const cgCount = Math.round(questionCount * 0.4);
+        const ceCount = questionCount - cgCount;
+
+        let filterSql = '';
+        const filterBinds: any[] = [];
+        
+        if (filters.banca) { filterBinds.push(filters.banca); filterSql += ` AND q.banca = $${filterBinds.length}`; }
+        if (filters.orgao) { filterBinds.push(filters.orgao); filterSql += ` AND q.orgao = $${filterBinds.length}`; }
+        if (filters.year) { filterBinds.push(filters.year); filterSql += ` AND q.year = $${filterBinds.length}`; }
+
+        // We use weight_manual from topics to increase probability.
+        // In SQLite, ORDER BY (RANDOM() * t.weight_manual) DESC is a naive weighted random.
+        
+        // Fetch CG
+        const qsCg = await query<Question>(
+          `SELECT q.* FROM questions q 
+           JOIN topics t ON q.topic_id = t.id 
+           WHERE q.archived = 0 AND t.category = 'gerais' ${filterSql}
+           ORDER BY (RANDOM() * t.weight_manual) DESC LIMIT $${filterBinds.length + 1}`,
+          [...filterBinds, cgCount]
         );
 
-        // Create answer placeholders
-        for (const q of qs) {
+        // Fetch CE
+        const qsCe = await query<Question>(
+          `SELECT q.* FROM questions q 
+           JOIN topics t ON q.topic_id = t.id 
+           WHERE q.archived = 0 AND t.category = 'especificos' ${filterSql}
+           ORDER BY (RANDOM() * t.weight_manual) DESC LIMIT $${filterBinds.length + 1}`,
+          [...filterBinds, ceCount]
+        );
+
+        let finalQs = [...qsCg, ...qsCe];
+        
+        // Fallback se não encontrar o suficiente na proporção, pega o que sobrar
+        if (finalQs.length < questionCount) {
+           const fallbackCount = questionCount - finalQs.length;
+           const excludeIds = finalQs.length > 0 ? finalQs.map(q => q.id).join(',') : '0';
+           const fallbackQs = await query<Question>(
+             `SELECT q.* FROM questions q 
+              WHERE q.archived = 0 AND q.id NOT IN (${excludeIds}) ${filterSql}
+              ORDER BY RANDOM() LIMIT $${filterBinds.length + 1}`,
+             [...filterBinds, fallbackCount]
+           );
+           finalQs = [...finalQs, ...fallbackQs];
+        }
+
+        // Shuffle
+        finalQs.sort(() => Math.random() - 0.5);
+
+        for (const q of finalQs) {
           await execute(
             `INSERT INTO exam_answers (exam_id, question_id) VALUES ($1, $2)`,
             [examId, q.id]

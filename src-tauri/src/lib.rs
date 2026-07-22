@@ -38,7 +38,10 @@ pub fn run() {
     ];
 
     tauri::Builder::default()
+        .plugin(tauri_plugin_process::init())
+        .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_opener::init())
+        .plugin(tauri_plugin_updater::Builder::new().build())
         .plugin(
             tauri_plugin_sql::Builder::default()
                 .add_migrations("sqlite:study.db", migrations)
@@ -54,6 +57,9 @@ pub fn run() {
             commands::keyring::set_api_key,
             commands::keyring::get_api_key,
             commands::keyring::delete_api_key,
+            commands::import::import_questions_batch,
+            commands::import::extract_pdf_text,
+            commands::import::discover_and_download_cebraspe_exams,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

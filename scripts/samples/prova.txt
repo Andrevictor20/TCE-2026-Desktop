@@ -1,0 +1,881 @@
+CEBRASPE – AEB – Edital: 2024
+
+-- CONHECIMENTOS ESPECÍFICOS -Questão 21
+
+Quando de sua criação, a Agência Espacial Brasileira (AEB),
+autarquia federal de natureza civil, era vinculada
+A à Força Aérea Brasileira.
+B ao Ministério da Defesa.
+C ao Ministério da Ciência, Tecnologia e Inovação.
+D ao Instituto Nacional de Pesquisas Espaciais.
+E à Presidência da República.
+
+Questão 22
+
+No que se refere à nova estrutura regimental da AEB,
+aprovada pelo Decreto n.º 11.192/2022, julgue os itens a seguir.
+I
+
+Compete à Diretoria de Assuntos Estratégicos acompanhar a
+política nacional de energia nuclear, e seus desdobramentos
+em objetivos e metas.
+II Compete à Diretoria de Gestão de Portfólio gerenciar os
+contratos que, decorrentes de projetos em execução, sejam
+relativos à transferência de tecnologias associadas a sistemas
+espaciais para o setor produtivo.
+III Compete à Diretoria de Inteligência Estratégica e Novos
+Negócios elaborar estudos estratégicos, em conjunto com as
+Forças Armadas, para identificar ameaças internacionais no
+que se refere à utilização de armamento em ambiente espacial
+por outros países.
+Assinale a opção correta.
+A Apenas o item I está certo.
+B Apenas o item II está certo.
+C Apenas os itens I e III estão certos.
+D Apenas os itens II e III estão certos.
+E Todos os itens estão certos.
+
+Questão 23
+
+Julgue os itens a seguir, com base na diretriz sobre
+Cooperação Internacional Consequente, prevista na Política
+Nacional de Desenvolvimento das Atividades Espaciais (PNDAE).
+I
+
+O Brasil deverá necessariamente desenvolver padrões
+nacionais próprios para projetos de sistemas espaciais, a fim
+de garantir a soberania nacional.
+II Na área da tecnologia espacial, o compartilhamento amplo do
+conhecimento científico resultante da cooperação entre os
+países é realizado de maneira não onerosa, com livre
+compartilhamento de dados para a realização de projeto
+específico.
+III As iniciativas de cooperação científica deverão buscar o
+estabelecimento de condições favoráveis para o intercâmbio
+de pessoas e assegurar participação proveitosa para o Brasil
+nos grandes programas científicos internacionais.
+IV A cooperação com países que compartilham problemas e
+dificuldades similares aos do Brasil deve receber atenção
+especial.
+Assinale a opção correta.
+A Apenas os itens I e II estão certos.
+B Apenas os itens I e IV estão certos.
+C Apenas os itens II e III estão certos.
+D Apenas os itens III e IV estão certos.
+E Todos os itens estão certos.
+
+Questão 24
+
+De acordo com o Decreto n.º 1.953/1996, os órgãos setoriais do
+Sistema Nacional de Desenvolvimento das Atividades
+Espaciais (SINDAE) são responsáveis por
+A realizar estudos estratégicos de setores da economia para
+proposição e inclusão de novos projetos no Programa
+Nacional de Atividades Espaciais.
+B promover parcerias público-privadas para o desenvolvimento
+do Programa Nacional de Atividades Espaciais.
+C prover consultoria setorial ao órgão central para aconselhá-lo
+na execução do Programa Nacional de Atividades Espaciais.
+D elaborar e atualizar o Programa Nacional de Atividades
+Espaciais.
+E coordenar setores e executar ações do Programa Nacional de
+Atividades Espaciais.
+
+Questão 25
+
+Segundo o Programa Nacional de Atividades Espaciais (PNAE)
+2022-2031, a Agência Espacial Brasileira (AEB) deve identificar
+continuamente propostas de missões espaciais que possam se
+submeter
+A ao padrão NASA (National Aeronautics and Space
+Administration).
+B à ISO (International Organization for Standardization).
+C à European Cooperation for Space Standardization (ECSS).
+D ao Procedimento para Seleção e Adoção de Missões
+Espaciais (ProSAME).
+E à Associação Brasileira de Normas Técnicas (ABNT).
+
+Questão 26
+
+De acordo com a Lei das Atividades Espaciais Nacionais (Lei
+n.º 14.946/2024), a regulamentação e fiscalização das atividades
+espaciais de defesa nacional são de competência
+A da Presidência da República.
+B do Instituto Nacional de Pesquisas Espaciais (INPE).
+C da Agência Espacial Brasileira (AEB) e do Comando da
+Aeronáutica, de maneira conjunta.
+D da Agência Espacial Brasileira (AEB).
+E do Comando da Aeronáutica.
+
+Questão 27
+
+Suponha que um operador espacial civil seja responsável por
+controlar a atividade espacial civil de um satélite nacional em
+operação no espaço aéreo brasileiro. Nessa situação, de acordo
+com a Lei n.o 14.946/2024, caso a licença do operador espacial
+civil seja cancelada em razão do comprometimento da segurança
+nacional,
+A o artefato espacial em operação será leiloado após um período
+de seis meses, e sua transferência será efetivada a outro
+operador espacial civil.
+B o artefato espacial será considerado um detrito espacial e,
+assim, não terá um responsável direto.
+C a Agência Espacial Brasileira elegerá um operador ad hoc
+para se tornar o responsável pelo artefato espacial até o fim
+da sua operação.
+D o Comando da Aeronáutica se tornará responsável pelo
+controle do artefato espacial, com vistas a assegurar a
+manutenção da segurança nacional.
+E o operador espacial civil permanecerá responsável pelo
+artefato espacial em operação, mesmo após o cancelamento
+de sua licença.
+
+CEBRASPE – AEB – Edital: 2024
+
+Questão 28
+
+Conforme o Decreto n.º 10.220/2020, servidores do governo dos
+Estados Unidos da América (EUA) presentes no Centro Espacial
+de Alcântara e que estejam ligados a atividades de lançamento
+têm
+A acesso a áreas onde veículos lançadores e espaçonaves dos
+EUA estão armazenados, pois esses espaços, quando
+ocupados dessa forma, deixam de ser considerados como
+áreas restritas ou controladas pela parte brasileira.
+B limitação de acesso a áreas restritas ou controladas, mesmo
+em áreas onde estão veículos lançadores e espaçonaves dos
+EUA.
+C livre acesso, sem qualquer aviso prévio, a áreas restritas ou
+controladas em qualquer tempo nas áreas que estão veículos
+lançadores e espaçonaves dos EUA.
+D acesso a áreas restritas ou controladas onde estão veículos
+lançadores e espaçonaves dos EUA, desde que requisitem
+autorização prévia com, no mínimo, um dia de antecedência.
+E acesso a áreas restritas ou controladas onde estão veículos
+lançadores e espaçonaves dos EUA, desde que previamente
+autorizados pelo contrato específico de lançamento.
+Espaço livre
+
+Text 1A4-I
+By the middle years of the 20th century, the optimistic
+story of limitless progress through scientific and technological
+advance came to be rivalled and sometimes overshadowed by a
+much more pessimistic, even apocalyptic vision of the trajectory
+of the modern project. It began to seem increasingly possible that
+technology would come to master its creators and carry humanity
+toward unforeseen and possibly catastrophic outcomes.
+Premonitions of technological wizardry leading to
+disasters are extremely old, dating back at least to the myth of
+Icarus, who is said to have fatally fallen into the sea after flying
+too close to the sun on wings his father, Daedalus, constructed.
+As the Industrial Revolution gathered steam, dark anticipations
+became increasingly widespread, in works such as Mary
+Shelley’s Frankenstein; or, the Modern Prometheus and Karel
+Capek’s R.U.R. Perhaps technology, not man, was “in the
+saddle,” as Henry Adams worried. And perhaps machines,
+becoming ever more capable and interconnected, were the next
+step in the evolution of life, destined to dominate and eventually
+eliminate humanity, as Samuel Butler warned. The contours of
+the future, H. G. Wells announced in one of his famous lectures,
+“The Discovery of the Future,” were difficult to discern but
+would surely be unlike the past or the present, and definitely
+included disasters of new types and magnitudes.
+In the ghastly world wars, technological advances
+empowered barbarism on a new scale, destroying the credibility
+of the simple modernist faith that more potent tools are a straight
+path to human betterment. Rather, technological advance has
+produced a cornucopia of double-edged swords, with amplified
+possibilities for both progress and disaster. A growing herd of
+horsemen of the anthropogenic apocalypse have ominously
+appeared on the human horizon of possibility: nuclear weapons,
+genetic engineering, total surveillance despotism, runaway
+artificial intelligence, and rampant environmental decay.
+Daniel Deudney. Dark Skies: Space Expansionism, Planetary Geopolitics,
+and the Ends of Humanity. New York: Oxford University Press, 2020 (adapted).
+
+Questão 29
+
+In text 1A4-I, the author
+A uses intertextual connections to describe a view of the uses
+of technology.
+B shows how technology replaced men in the middle of
+the 20th century.
+C is ironic about how dangerous technological advance can be.
+D accuses Icarus of being reckless in his flight towards the sun.
+E attributes the pessimistic notion of progress to the authors
+he mentions.
+
+Questão 30
+
+Considering the meaning of the expressions used in text 1A4-I,
+choose the correct option.
+A In the first sentence of the third paragraph, the word “ghastly”
+could be correctly replaced with great without this changing
+the meaning of the text.
+B In the last sentence of the text, the word “ominously” could
+be correctly replaced with prominently without this changing
+the meaning of the fragment.
+C In the first sentence of the second paragraph, “wizardry”
+means mythology.
+D In the second sentence of the second paragraph, the fragment
+“gathered steam” has the same meaning as lost ground.
+E In the third sentence of the second paragraph, the replacement
+of the expression ‘in the saddle’ with in control would
+maintain the meaning of the excerpt.
+
+CEBRASPE – AEB – Edital: 2024
+
+Questão 31
+
+In the last paragraph of text 1A4-I, the
+A excerpt “rampant environmental decay” (last sentence) refers
+to the natural decline earth environment is likely to go through.
+B word “Rather” (second sentence) introduces a statement that
+adds a complement to what came before it.
+C word “cornucopia” (second sentence) describes the shape of
+the “double-edged swords”.
+D word “runaway” (last sentence) is describing a kind of
+artificial intelligence that is out of control.
+E fragment “A growing herd of horsemen” (last sentence) is a
+description of groups of giant men riding horses.
+Text 1A4-II
+The pursuit of space exploration represents one of the
+most captivating undertakings of the human race, serving as a
+testament to our inherent drive to comprehend the cosmos and
+our position within it. As humanity expands its reach beyond the
+confines of Earth, the intricate and essential relationship between
+technology and law grows increasingly intricate and
+indispensable.
+The rapid progress of technology has ushered us into an
+era when endeavours in outer space, previously confined to the
+realm of science fiction, are now becoming tangible and feasible.
+The present circumstances require a comprehensive legal
+structure encompassing the existing range of space endeavours
+and the flexibility to accommodate dynamic technological
+advancements. The Outer Space Treaty of 1967 set the
+foundational legal principles governing space exploration
+activities. However, as humanity continues to explore space and
+private companies participate alongside sovereign nations, the
+intersection of technology and law serves as both a catalyst for
+progress and a cause of disagreement.
+Bansi Kaneria; Shivam Pandey. Interplay Between Technology and Law in Space Exploration.
+In: IOSR Journal of Environmental Science Toxicology and Food Technology,
+2024, 18 (03): 31-46 (adapted).
+
+Questão 32
+
+The expression “a comprehensive legal structure” (second
+sentence of the second paragraph) could be correctly replaced,
+maintaining the original meaning of text 1A4-II, with
+A an understandable system of laws.
+B a compassionate system of legal principles.
+C a compedium of laws.
+D a thorough legal framework.
+E a manageable legal structure.
+
+Questão 33
+
+Based on the last paragraph of text 1A4-II, it is correct to
+conclude that the Outer Space Treaty of 1967
+A limited itself to imposing rules on the way private companies
+explore space travelling.
+B imposed the intersection of technology and law.
+C resulted in disagreements about space exploration in
+the 20th century.
+D was signed by most sovereign countries in the world.
+E was unable to foresee some aspects of today’s space
+exploration activities.
+
+Questão 34
+
+In the second paragraph of text 1A4-II, the expression “has
+ushered”
+A explains why endeavours in space are now “tangible and
+feasible”.
+B is a verbal tense used to help the reader grasp what “progress”
+means in the text.
+C has a meaning similar to has guided.
+D is written in the singular because of the word “technology”.
+E could be replaced with was ushering us without this
+changing the meaning of the sentence.
+
+Questão 35
+
+Os objetivos de desenvolvimento do milênio foram
+adotados pela Assembleia Geral das Nações Unidas em setembro
+de 2000, na Declaração do Milênio, quando 191 países assinaram
+o documento, que passou a guiar os discursos e as ações das
+principais agências de cooperação para o desenvolvimento,
+tornando-se uma espécie de unanimidade nas referências de seus
+documentos. Desenvolvimento sustentável e gênero, entre outros,
+convertem-se em componentes onipresentes na cooperação, em
+alguns casos, de inclusão obrigatória para a aprovação de
+projetos.
+E. S. Kraychete e D. Vitale, (orgs). Cooperação internacional para o desenvolvimento:
+desafios no século XXI. Salvador: EDUFBA, 2013, p. 111 (com adaptações).
+
+A partir do texto precedente, e considerando os objetivos de
+desenvolvimento do milênio, é correto afirmar que o novo
+discurso do desenvolvimento humano sustentável representa não
+apenas uma redefinição da agenda de desenvolvimento, mas
+também
+A uma estratégia homogênea, isenta de diversidades históricas,
+culturais e econômicas, visando à construção conjunta de
+conhecimento que envolva o desenvolvimento local aliado à
+preservação.
+B uma iniciativa desvinculada de relações de poder, focada em
+assistência técnica e financeira aos países periféricos para a
+preservação ambiental aliada à manutenção das populações
+nativas.
+C um esforço unificado dos países desenvolvidos para erradicar
+a pobreza global, que evita influências políticas e valoriza o
+desenvolvimento local em detrimento da produção ilimitada e
+do consumo desgovernado.
+D um esforço de atores do desenvolvimento, comportando a
+noção de arranjo institucional, no qual o mercado figura
+como o principal condutor da produção e distribuição de
+bens; o Estado, como articulador da redefinição das regras do
+jogo; e um terceiro setor, que, em parceria com o mercado e o
+Estado, promove o bem-estar social.
+E uma prática de transferência de “saber-fazer” dos países do
+Norte para os do Sul, com vistas à modernização
+caracterizada pelo aproveitamento do fornecimento de
+matérias-primas locais.
+
+CEBRASPE – AEB – Edital: 2024
+
+Questão 36
+
+Questão 38
+
+A ajuda externa, embora grande e comum, não é isenta de
+controvérsias, especialmente nos principais países que fornecem
+ajuda. Os críticos reclamam que a ajuda tem sido ineficaz e deve
+ser cortada. Os defensores argumentam que ela tem sido eficaz,
+pode, com reformas, ser mais eficaz no futuro e, portanto, por
+motivos morais e práticos, deve ser dramaticamente expandida.
+No entanto, uma parte importante do debate sobre a eficácia da
+ajuda está frequentemente ausente — a mistura de propósitos
+para os quais a ajuda é fornecida. A ajuda tem sido fornecida não
+apenas para promover o crescimento daquele que recebe a ajuda
+e a redução da pobreza no exterior. Ela tem sido e continua a ser
+fornecida para uma variedade de propósitos, dos quais o
+desenvolvimento é apenas um.
+
+Tal como na cooperação recebida, a formalização da
+Cooperação Sul-Sul para o Desenvolvimento (CSSD) se dá a
+partir de acordo de cooperação técnica com um ou mais países,
+ou no marco de um acordo básico com um organismo
+internacional. A partir do marco jurídico geral, são propostos
+ajustes complementares ou programas executivos que passam a
+dar contorno para a cooperação prestada. Do ponto de vista
+operacional da cooperação, a execução administrativo-financeira
+pode ser feita diretamente pelo governo brasileiro, com recursos
+próprios; de forma paralela pelo governo brasileiro e por
+uma entidade parceira, com recursos compartilhados; e, ainda, de
+forma descentralizada a uma entidade parceira, sendo os recursos
+compartilhados ou não.
+
+Carol Lancaster. Foreign Aid: diplomacy, development, domestic politics.
+The University of Chicago Press, 2007, p. 2 (com adaptações).
+
+Considerando-se o trecho precedente e o contexto da cooperação
+internacional, uma característica distintiva da cooperação
+transregional é que ela
+
+A respeito do trecho precedente, é correto afirmar que o
+desenvolvimento de capacidades na cooperação internacional
+representa uma evolução em relação à tradicional visão de
+assistência técnica, pois
+A enfatiza a passividade da parte receptora na absorção de
+conhecimento, dificultando a apropriação local e a
+manutenção da assistência no médio prazo.
+B foca na assistência técnica via especialistas externos, com
+treinamentos voltados para as prioridades do país doador.
+C prioriza a transferência de expertise dos países desenvolvidos
+para os países em desenvolvimento, sem considerar as
+necessidades locais.
+D concentra-se na imposição de “melhores práticas” externas,
+visando a atingir objetivos definidos por atores externos.
+E busca
+fortalecer
+as
+capacidades
+individuais
+ou
+organizacionais para atingir um objetivo local próprio, em
+vez de um objetivo externo.
+
+Questão 37
+
+Em relação a soberania, julgue os itens a seguir.
+
+I
+
+A soberania, no contexto do direito internacional, é o
+exercício da autoridade de um povo por meio de seus órgãos
+constitucionais representativos.
+II A violação da soberania de um país pode levar ao início de
+um conflito, pois esse princípio está relacionado ao conceito
+de Estado.
+III A resolução pacífica de problemas globais, como
+alimentação, energia e meio ambiente, dentro do direito
+internacional, depende da coordenação de diretrizes entre os
+Estados, por meio de tratados e convenções.
+IV Classicamente, a soberania foi definida como separável, de
+forma absoluta e perpétua, da ideia de Estado.
+Estão certos apenas os itens
+A I e II.
+B I e IV.
+C III e IV.
+D I, II e III.
+E II, III e IV.
+
+Cooperação internacional em tempos de pandemia: relatório Cobradi 2019-2020.
+
+A é implementada por meio de contribuições financeiras
+reembolsáveis, como empréstimos ou soft loans, para projetos
+de infraestrutura em países de baixa renda.
+B envolve a participação exclusiva de países vizinhos, que
+compartilham fronteiras geográficas e desafios comuns.
+C envolve a atuação de entes subnacionais (como estados ou
+municípios) em projetos de cooperação direta com outros
+entes subnacionais no exterior.
+D pressupõe a existência de um acordo básico entre um país
+desenvolvido e um organismo internacional, e atua no âmbito
+de organizações ou arranjos regionais e(ou) sub-regionais.
+E ocorre entre países de diferentes regiões do mundo, buscando
+promover o intercâmbio de experiências e boas práticas em
+áreas como desenvolvimento sustentável, comércio e
+segurança.
+
+Questão 39
+
+A necessidade urgente de soluções globais para problemas
+transnacionais apresenta uma oportunidade sem precedentes para
+a ciência desempenhar um papel central nas relações
+internacionais. O fortalecimento da colaboração científica
+internacional e a integração da ciência nas políticas diplomáticas
+não são apenas benéficos, mas essenciais para o progresso
+humano e a sustentabilidade global.
+Internet: <esri.net.br/diplomacia-cientifica/> (com adaptações).
+
+No contexto apresentado no trecho precedente, acordos de
+pesquisa conjunta e inovação devem considerar a
+A restrição da participação de cientistas de países em
+desenvolvimento, para garantir a qualidade e a segurança dos
+projetos de pesquisa.
+B exclusividade de acesso aos resultados da pesquisa para os
+países desenvolvidos, em função do volume de investimentos.
+C criação de mecanismos para a transferência de tecnologia e a
+capacitação, especialmente para países em desenvolvimento,
+visando a reduzir as desigualdades científicas e tecnológicas.
+D inclusão de cláusulas que promovam a equidade no
+compartilhamento de benefícios e conhecimentos entre todos
+os países participantes, independentemente de seu nível de
+desenvolvimento.
+E priorização de áreas de pesquisa que beneficiem os interesses
+econômicos dos países mais ricos, sem considerar os
+impactos globais.
+
+CEBRASPE – AEB – Edital: 2024
+
+Questão 40
+
+No contexto da cooperação internacional, os acordos bilaterais e
+memorandos de entendimento na Cooperação Sul-Sul para o
+Desenvolvimento (CSSD)
+A são utilizados exclusivamente para a cooperação trilateral,
+envolvendo o Brasil, um país desenvolvido e um país em
+desenvolvimento.
+B são implementados por meio de contribuições financeiras
+reembolsáveis, como empréstimos ou soft loans, para projetos
+de infraestrutura em países de baixa renda.
+C são instrumentos informais que não geram obrigações
+jurídicas e servem apenas como declarações de intenções
+entre os países.
+D atuam como acordos vinculantes que estabelecem as metas e
+os
+
+objetivos
+
+específicos
+
+da
+
+CSSD
+
+e
+
+definem
+
+as
+
+responsabilidades de cada país e os recursos a serem
+alocados.
+E atuam como marcos jurídicos gerais que formalizam a
+cooperação técnica entre o Brasil e outros países e permitem
+a proposição de ajustes complementares ou programas
+executivos.
+
+Questão 41
+
+A respeito de cooperação internacional, julgue os itens
+
+seguintes.
+I
+
+A cooperação internacional se baseia unicamente na
+transferência
+
+de
+
+recursos
+
+financeiros
+
+dos
+
+países
+
+desenvolvidos para os países em desenvolvimento, visando a
+suprir as necessidades básicas e a promover o crescimento
+econômico.
+II A cooperação internacional pode envolver a troca de
+conhecimentos, experiências e tecnologias entre os países,
+buscando o fortalecimento das capacidades locais e a
+promoção do desenvolvimento sustentável.
+III A formalização da cooperação se dá a partir de acordos com
+um ou mais países, ou no marco de um acordo básico com
+um organismo internacional.
+Assinale a opção correta.
+A Apenas o item I está certo.
+B Apenas o item II está certo.
+C Apenas os itens I e III estão certos.
+D Apenas os itens II e III estão certos.
+E Todos os itens estão certos.
+
+Questão 42
+
+Assinale a opção em que é apresentada e descrita uma técnica
+eficaz, utilizada em negociações comerciais em fóruns
+multilaterais, para alcançar consenso entre múltiplas partes com
+interesses divergentes, considerando-se a necessidade de
+flexibilidade estratégica e de adaptação às motivações dos
+parceiros.
+A comunicação seletiva e controle de informação:
+compartilhamento estratégico de informações, mantendo-se
+posições firmes e evitando-se revelar dados sensíveis que
+possam comprometer a posição de negociação do país
+B concessões unilaterais aceleradas: realização rápida de
+concessões substanciais com ou sem reciprocidade, visando a
+destravar o processo e a criar um clima positivo, com foco no
+“compromisso único”
+C foco exclusivo em resultados quantificáveis: concentração em
+atingir metas específicas de acesso a mercados e de redução
+tarifária, independentemente das considerações políticas
+internas ou das necessidades dos parceiros
+D negociação baseada em interesses com foco em soluções
+integrativas: priorização da compreensão dos interesses
+subjacentes de cada parte, em busca de soluções criativas que
+maximizem ganhos mútuos e promovam resultados de “soma
+positiva”
+E táticas de força e ameaças veladas: utilização de pressão
+diplomática e ameaças sutis de retaliação comercial para
+influenciar a tomada de decisão, visando a forçar concessões
+unilaterais
+
+Questão 43
+
+Assinale a opção que apresenta as melhores ferramentas de
+diplomacia na cooperação internacional, considerando o
+estabelecimento de regras e normas.
+A diplomacia científica e ambiental como pontos focais
+B missões diplomáticas e protocolos de Estado
+C tratados, acordos e sanções econômicas
+D negociações bilaterais, multilaterais e diplomacia pública
+E tratados, acordos e convenções internacionais
+
+Questão 44
+
+Em negociações comerciais internacionais, tendo em vista a
+diversidade de interesses e estratégias entre os países, para
+construir confiança e garantir acordos duradouros é fundamental
+levar em consideração a
+A intervenção proativa, com a utilização de instrumentos de
+pressão econômica e política para influenciar as decisões dos
+parceiros, com vistas a obter vantagens unilaterais e a impor
+os próprios interesses.
+B reciprocidade estrita, com a exigência de concessões
+equivalentes e imediatas em todas as áreas, buscando-se o
+equilíbrio perfeito em cada etapa da negociação,
+independentemente do contexto.
+C soberania absoluta, com a defesa intransigente dos interesses
+nacionais, rejeitando-se qualquer forma de compromisso ou
+cessão de autonomia decisória em nome da cooperação.
+D discriminação seletiva, com a priorização de acordos com
+países que compartilham os mesmos valores políticos e
+ideológicos, excluindo-se aqueles que apresentam
+divergências significativas.
+E transparência e a boa-fé, com a divulgação clara das
+informações relevantes e a condução das negociações com
+honestidade e integridade, em busca de soluções mutuamente
+benéficas.
+
+CEBRASPE – AEB – Edital: 2024
+
+Questão 45
+
+O Tratado sobre os Princípios que Regem as Atividades dos
+Estados na Exploração e no Uso do Espaço Exterior tem como
+principal objetivo
+A regular a exploração de corpos celestes, exceto a Lua.
+B regular a propriedade sobre os recursos no espaço.
+C regular a exploração do espaço exterior, incluindo a Lua e
+outros corpos celestes.
+D definir os direitos dos astronautas em missões espaciais
+privadas.
+E regrar a colocação de armas nucleares no espaço.
+
+Questão 46
+
+A Convenção sobre Responsabilidade Internacional por Danos
+Causados por Objetos Espaciais estabelece que
+A a realização de testes nucleares por meio de objetos espaciais
+pode ser excepcionalmente autorizada.
+B o Estado detentor de objeto espacial envolvido em acidente é
+responsável pelos danos causados a astronautas de outros
+países.
+C o Estado lançador tem obrigações relacionadas aos objetos
+espaciais por ele lançados que atingirem o território de outros
+Estados.
+D os Estados têm responsabilidade internacional pela falta de
+diligência no monitoramento dos seus objetos espaciais para
+prevenir danos.
+E os danos causados por objetos espaciais no âmbito de
+lançamentos conjuntos por mais de um Estado são de
+responsabilidade individual do Estado em cujo território foi
+feito o lançamento.
+
+Questão 47
+
+O Acordo sobre o Resgate de Astronautas
+A tem como principal objetivo estabelecer regras para que os
+países enviem missões militares ao espaço a fim de resgatar
+astronautas.
+B estabelece regras para o resgate de astronautas, bem como
+dos objetos que tiverem sido enviados com eles.
+C atribui ao secretariado geral das Nações Unidas a função
+articuladora de coordenação do resgate de astronautas.
+D garante que os astronautas sejam resgatados caso sofram
+acidente em território de qualquer país.
+E garante que os astronautas sejam resgatados caso decidam
+anular uma missão.
+
+Questão 48
+
+A Convenção sobre o Registro de Objetos Lançados no Espaço
+Exterior
+A define a responsabilidade por danos causados por objetos
+lançados no espaço.
+B estabelece um controle internacional dos objetos lançados no
+espaço exterior.
+C prevê que os objetos espaciais sejam monitorados por
+um único país.
+D estabelece um sistema de registro dos objetos lançados no
+espaço para a realização de testes nucleares.
+E estabelece, como sua principal finalidade, um sistema de
+registro unificado dos interesses comerciais das empresas de
+satélites.
+
+Questão 49
+
+Com base no Acordo que Regula as Atividades dos Estados na
+Lua e em Outros Corpos Celestes, assinale a opção correta.
+A Os Estados podem realizar a mineração de metais raros na
+Lua, sem restrições.
+B Os recursos da Lua devem ser destinados ao benefício
+especial dos países em desenvolvimento.
+C Os Estados podem explorar a Lua de forma privada, sem a
+necessidade de regulamentação internacional.
+D Os recursos da Lua destinam-se ao benefício exclusivo dos
+países envolvidos em missões espaciais.
+E Os Estados devem cooperar entre si e utilizar os recursos da
+Lua e de outros corpos celestes de forma que isso beneficie
+toda a humanidade.
+
+Questão 50
+
+No Tratado sobre os Princípios que Regem as Atividades dos
+Estados na Exploração e no Uso do Espaço Exterior, existe uma
+cláusula que
+A proíbe a troca de tecnologia militar entre países.
+B permite ensaios com armas em órbita, exceto as de destruição
+em massa.
+C estabelece um sistema de defesa para os astronautas.
+D possibilita a utilização de pessoal militar para fins de
+pesquisas científicas ou para qualquer outro fim pacífico.
+E permite a criação de bases militares em outros planetas.
+
+Questão 51
+
+O Acordo sobre o Retorno de Objetos Lançados no Espaço
+Exterior especifica que o Estado em cujo território caia
+um objeto espacial de outro Estado
+A pode autorizar imediatamente que o objeto seja destruído.
+B pode negociar a venda do objeto ao país que realizar sua
+recuperação.
+C deve permitir que o país de origem recupere o objeto de
+acordo com as normas do referido acordo internacional.
+D deve entregar o objeto ao país de origem, sem necessidade de
+seguir qualquer procedimento legal para tanto.
+E pode manter o objeto e usá-lo para fins militares, até que o
+país de origem o reclame.
+
+Questão 52
+
+A Convenção sobre o Registro de Objetos Lançados no Espaço
+Exterior exige que os Estados registrem os objetos espaciais
+lançados, com a finalidade principal de
+A estabelecer regras sobre as permissões de viagens privadas ao
+espaço.
+B tornar públicos os detalhes comerciais sobre os objetos
+lançados.
+C determinar os direitos de propriedade sobre os objetos
+espaciais.
+D facilitar a rastreabilidade e a responsabilização por danos
+causados no espaço.
+E facilitar a prospecção mineral dos objetos no espaço.
+
+CEBRASPE – AEB – Edital: 2024
+
+Questão 53
+
+O Programa Espacial Brasileiro (PEB) foi oficialmente instituído
+para coordenar as atividades espaciais no País. Diversos
+acontecimentos contribuíram para estruturar e para implementar
+o programa, sendo um dos eventos que marcou de modo
+significativo a estruturação do PEB
+A a criação de uma estação de rastreio em Fernando de
+Noronha, em 1956.
+B a internalização no Brasil do Tratado do Espaço, realizada
+por meio de decreto.
+C a formalização do Grupo de Organização da Comissão
+Nacional de Atividades Espaciais (GOCNAE), que originou a
+Comissão Nacional de Atividades Espaciais.
+D a construção da estação operacional de Cuiabá para receber
+imagens de satélites.
+E o lançamento do primeiro satélite brasileiro, em 1993.
+
+Questão 54
+
+Uma das principais funções do Comitê das Nações Unidas para o
+Uso Pacífico do Espaço Exterior (COPUOS), criado em 1959
+pela Assembleia Geral da Organização das Nações
+Unidas (ONU), é
+A desenvolver normas e princípios visando à exploração não
+conflituosa do espaço.
+B definir padrões técnicos para a construção de veículos
+espaciais.
+C regulamentar a exploração comercial do espaço por empresas
+privadas.
+D supervisionar a construção de bases lunares internacionais.
+E emitir licenças para lançamento de satélites no espaço
+exterior.
+
+Questão 55
+
+Com relação às políticas espaciais, assinale a opção na qual é
+apresentada a iniciativa que prevê, especificamente, o uso de
+dados espaciais para resposta a desastres naturais.
+A Marco de Sendai para Redução de Desastres
+B Acordo de Salvaguardas Tecnológicas Brasil-Estados Unidos
+da América
+C Acordo Artemis
+D Carta Espacial Internacional Espaço e Grandes Catástrofes
+E Convenção Quadro das Nações Unidas sobre Mudança do
+Clima
+
+Questão 56
+
+A cooperação entre o Brasil e a
+Europeia (ESA) inclui iniciativas voltadas
+
+Agência
+
+Espacial
+
+A ao controle de satélites geoestacionários para comunicações
+militares.
+B aos programas de observação do planeta Terra e à pesquisa
+climática.
+C ao desenvolvimento conjunto de veículos lançadores
+tripulados.
+D à criação de uma base lunar em parceria com os Estados
+europeus e com os Estados Unidos da América.
+E à construção de um centro espacial conjunto na Amazônia.
+
+Questão 57
+
+O Brasil ratificou alguns tratados espaciais internacionais e, por
+meio deles, internalizou princípios fundamentais para a
+governança do tema via decretos executivos. Desses tratados, o
+que incentivou o país a estabelecer uma estrutura institucional
+para coordenar as atividades espaciais foi
+A o Tratado de Montego Bay, que prevê a delimitação espacial
+sob jurisdição internacional.
+B o Tratado sobre os princípios que regem as atividades dos
+Estados na exploração e no uso do espaço exterior, inclusive
+a Lua e outros corpos celestes.
+C a Convenção sobre Responsabilidade Internacional por Danos
+Causados por Objetos Espaciais.
+D o Acordo sobre o resgate de astronautas, o retorno de
+astronautas e a devolução de objetos lançados no espaço
+exterior.
+E a Convenção sobre o Registro de Objetos Lançados no
+Espaço Exterior.
+
+Questão 58
+
+O Brasil tem defendido, no âmbito internacional, políticas
+voltadas para a sustentabilidade no espaço. Nesse sentido,
+um dos principais temas defendidos pelo país é relativo
+A à inclusão de um objetivo de desenvolvimento sustentável
+específico para a exploração espacial.
+B à repartição de benefícios oriundos da exploração de recursos
+espaciais.
+C à regulamentação das patentes decorrentes da exploração dos
+recursos espaciais.
+D ao desenvolvimento de estações espaciais exclusivas para
+países em desenvolvimento.
+E à elaboração de normas específicas sobre detritos espaciais.
+
+Questão 59
+
+Assinale a opção em que é corretamente apresentado o nome do
+primeiro satélite desenvolvido pelo Brasil que desempenhou um
+papel fundamental no monitoramento ambiental e na segurança
+alimentar.
+A Sputnik
+B Amazônia-1
+C Voyager 1
+D SGDC-1
+E Hubble
+
+Questão 60
+
+O principal objetivo da Convenção sobre o Registro de Objetos
+Lançados ao Espaço Exterior (1976), da qual o Brasil é
+signatário, é
+A proibir lançamentos comerciais de satélites sem autorização
+da ONU.
+B criar um banco de dados global para o rastreamento de
+objetos espaciais.
+C estabelecer um sistema de pagamento de royalties pela
+exploração do espaço.
+D garantir que apenas Estados-membros da ONU possam lançar
+satélites no espaço.
+E regular a repartição de benefícios e de patentes relacionadas à
+exploração dos corpos celestes.
+
+

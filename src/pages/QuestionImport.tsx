@@ -1,259 +1,250 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useQuestionStore } from '../stores/questionStore';
 import { useTopicStore } from '../stores/topicStore';
+import { parseGenericCsv } from '../lib/importers/genericCsvParser';
+import { parseCebraspePdf, PartialQuestion } from '../lib/importers/cebraspePdfParser';
+import { autoTagTopic } from '../lib/importers/topicAutoTagger';
+import { invoke } from '@tauri-apps/api/core';
 
 export default function QuestionImport() {
   const navigate = useNavigate();
-  const { saveQuestion } = useQuestionStore();
-  const { topics } = useTopicStore();
+  const { topics, fetchTopics } = useTopicStore();
   
-  const [importMode, setImportMode] = useState<'text' | 'csv'>('csv');
-  const [inputText, setInputText] = useState('');
-  const [topicId, setTopicId] = useState<number | ''>('');
-  const [status, setStatus] = useState('');
+  const [step, setStep] = useState<1 | 2 | 3>(1);
+  const [importMode, setImportMode] = useState<'csv' | 'pdf'>('csv');
   
-  const [csvPreview, setCsvPreview] = useState<any[]>([]);
+  // Step 1 states
+  const [csvText, setCsvText] = useState('');
+  const [provaPdfPath, setProvaPdfPath] = useState('');
+  const [gabaritoPdfPath, setGabaritoPdfPath] = useState('');
+  
+  // Step 2 states
+  const [previewQuestions, setPreviewQuestions] = useState<(PartialQuestion & { _selected?: boolean; _confidence?: number })[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  
+  // Step 3 states
+  const [importResult, setImportResult] = useState<{ imported: number, duplicated: number, batch_id: number } | null>(null);
 
-  const parseCSV = (text: string) => {
-    // Simple CSV parser supporting quotes (basic)
-    const lines = text.split('\n').filter(l => l.trim());
-    if (lines.length < 2) return;
+  useEffect(() => {
+    if (topics.length === 0) fetchTopics();
+  }, [topics.length, fetchTopics]);
+
+  const level1Topics = topics.filter(t => t.level === 1).map(t => ({ id: t.id, title: t.title }));
+
+  const processFiles = async () => {
+    setIsLoading(true);
+    let parsed: PartialQuestion[] = [];
     
-    const headers = lines[0].split(';').map(h => h.trim().replace(/"/g, '').toLowerCase());
-    
-    const parsed = [];
-    for (let i = 1; i < lines.length; i++) {
-      const line = lines[i];
-      // Splitting by semicolon
-      const cols = line.split(';');
-      if (cols.length >= 7) { // Need at least statement, A, B, C, D, E, correct_answer
-        const obj: any = {};
-        headers.forEach((h, idx) => {
-          if (cols[idx]) obj[h] = cols[idx].replace(/^"|"$/g, '').trim();
-        });
-        
-        // Map to internal format
-        parsed.push({
-          statement: obj.enunciado || obj.statement || cols[0],
-          alt_a: obj.a || obj.alt_a || cols[1],
-          alt_b: obj.b || obj.alt_b || cols[2],
-          alt_c: obj.c || obj.alt_c || cols[3],
-          alt_d: obj.d || obj.alt_d || cols[4],
-          alt_e: obj.e || obj.alt_e || cols[5],
-          correct_answer: (obj.gabarito || obj.correct_answer || cols[6])?.toUpperCase(),
-          banca: obj.banca || 'Manual',
-        });
+    if (importMode === 'csv') {
+      parsed = parseGenericCsv(csvText);
+    } else if (importMode === 'pdf') {
+      if (provaPdfPath && gabaritoPdfPath) {
+        try {
+          const provaText = await invoke<string>('extract_pdf_text', { path: provaPdfPath });
+          const gabaritoText = await invoke<string>('extract_pdf_text', { path: gabaritoPdfPath });
+          parsed = parseCebraspePdf(provaText, gabaritoText);
+        } catch (e) {
+          console.error("Failed to parse PDF", e);
+          alert("Erro ao extrair PDF: " + String(e));
+        }
+      } else {
+        alert("Forneça os caminhos dos PDFs da prova e do gabarito.");
       }
     }
-    setCsvPreview(parsed);
-  };
-
-  const handleTextChange = (val: string) => {
-    setInputText(val);
-    if (importMode === 'csv') {
-      parseCSV(val);
-    }
-  };
-
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (evt) => {
-        const text = evt.target?.result as string;
-        setInputText(text);
-        parseCSV(text);
+    
+    // Auto-tagging
+    const tagged = parsed.map(q => {
+      const tag = autoTagTopic(q.statement, level1Topics);
+      return {
+        ...q,
+        topic_id: tag ? tag.topic_id : undefined,
+        _confidence: tag ? tag.confidence : 0,
+        _selected: true
       };
-      reader.readAsText(file);
-    }
+    });
+
+    setPreviewQuestions(tagged);
+    setIsLoading(false);
+    setStep(2);
   };
 
-  const handleImport = async () => {
-    if (!topicId) {
-      setStatus("Selecione um tópico de destino.");
-      return;
-    }
+  const executeImport = async () => {
+    setIsLoading(true);
+    const toImport = previewQuestions.filter(q => q._selected);
+    
+    // clean internal properties before sending to rust
+    const cleanQuestions = toImport.map(q => {
+      const { _selected, _confidence, ...rest } = q;
+      return rest;
+    });
 
     try {
-      if (importMode === 'csv' && csvPreview.length > 0) {
-        let imported = 0;
-        for (const q of csvPreview) {
-          if (q.statement && q.correct_answer && ['A','B','C','D','E'].includes(q.correct_answer)) {
-            await saveQuestion({
-              topic_id: Number(topicId),
-              statement: q.statement,
-              alt_a: q.alt_a,
-              alt_b: q.alt_b,
-              alt_c: q.alt_c,
-              alt_d: q.alt_d,
-              alt_e: q.alt_e,
-              correct_answer: q.correct_answer,
-              banca: q.banca,
-              source: 'csv_import'
-            });
-            imported++;
-          }
-        }
-        setStatus(`${imported} questões importadas via CSV com sucesso!`);
-        setInputText('');
-        setCsvPreview([]);
-      } else if (importMode === 'text') {
-        const blocks = inputText.split(/\n\s*\n/).filter(b => b.trim().length > 0);
-        let imported = 0;
-
-        for (const block of blocks) {
-          const lines = block.split('\n').map(l => l.trim()).filter(l => l.length > 0);
-          
-          let statement = '';
-          let alt_a = '', alt_b = '', alt_c = '', alt_d = '', alt_e = '';
-          let correct_answer: any = null;
-          let currentCapture = 'statement';
-
-          for (const line of lines) {
-            const upperLine = line.toUpperCase();
-            if (upperLine.startsWith('A)') || upperLine.startsWith('A -')) { currentCapture = 'A'; alt_a = line.substring(2).trim(); }
-            else if (upperLine.startsWith('B)') || upperLine.startsWith('B -')) { currentCapture = 'B'; alt_b = line.substring(2).trim(); }
-            else if (upperLine.startsWith('C)') || upperLine.startsWith('C -')) { currentCapture = 'C'; alt_c = line.substring(2).trim(); }
-            else if (upperLine.startsWith('D)') || upperLine.startsWith('D -')) { currentCapture = 'D'; alt_d = line.substring(2).trim(); }
-            else if (upperLine.startsWith('E)') || upperLine.startsWith('E -')) { currentCapture = 'E'; alt_e = line.substring(2).trim(); }
-            else if (upperLine.startsWith('GABARITO:')) {
-              const ans = upperLine.replace('GABARITO:', '').trim();
-              if (['A','B','C','D','E'].includes(ans)) correct_answer = ans;
-            } else {
-              if (currentCapture === 'statement') statement += (statement ? '\n' : '') + line;
-              if (currentCapture === 'A') alt_a += ' ' + line;
-              if (currentCapture === 'B') alt_b += ' ' + line;
-              if (currentCapture === 'C') alt_c += ' ' + line;
-              if (currentCapture === 'D') alt_d += ' ' + line;
-              if (currentCapture === 'E') alt_e += ' ' + line;
-            }
-          }
-
-          if (statement && correct_answer) {
-            await saveQuestion({
-              topic_id: Number(topicId),
-              statement,
-              alt_a, alt_b, alt_c, alt_d, alt_e,
-              correct_answer,
-              source: 'text_import'
-            });
-            imported++;
-          }
-        }
-        
-        setStatus(`${imported} questões importadas (texto plano)!`);
-        if (imported > 0) setInputText('');
-      } else {
-        setStatus('Nenhum dado válido para importar.');
-      }
-    } catch (e: any) {
-      setStatus(`Erro na importação: ${e.message}`);
+      const res = await invoke<{ imported: number, duplicated: number, batch_id: number }>('import_questions_batch', {
+        batchName: `Importação ${new Date().toLocaleString()}`,
+        sourceType: importMode === 'csv' ? 'csv_generic' : 'pdf_cebraspe',
+        banca: importMode === 'csv' ? 'Manual' : 'Cebraspe',
+        orgao: null,
+        ano: new Date().getFullYear(),
+        questions: cleanQuestions
+      });
+      setImportResult(res);
+      setStep(3);
+    } catch (e) {
+      console.error(e);
+      alert("Erro na importação: " + String(e));
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <div id="question-import-page">
-      <div className="section-header">
+    <div id="question-import-page" style={{ padding: 'var(--space-md)' }}>
+      <div className="section-header" style={{ marginBottom: 'var(--space-md)' }}>
         <div>
           <button className="btn btn--ghost btn--sm" style={{ paddingLeft: 0 }} onClick={() => navigate(-1)}>
             ← Voltar
           </button>
-          <h1 className="section-title" style={{ marginTop: 'var(--space-xs)' }}>Importar Questões</h1>
+          <h1 className="section-title" style={{ marginTop: 'var(--space-xs)' }}>Assistente de Importação</h1>
         </div>
       </div>
 
-      <div className="card" style={{ maxWidth: 800 }}>
-        <div className="tabs">
-          <button 
-            className={`tab ${importMode === 'csv' ? 'tab--active' : ''}`}
-            onClick={() => setImportMode('csv')}
-          >
-            Arquivo CSV
-          </button>
-          <button 
-            className={`tab ${importMode === 'text' ? 'tab--active' : ''}`}
-            onClick={() => setImportMode('text')}
-          >
-            Texto Livre
-          </button>
+      <div className="card" style={{ maxWidth: 1000 }}>
+        {/* Wizard Header */}
+        <div style={{ display: 'flex', gap: 'var(--space-md)', marginBottom: 'var(--space-lg)' }}>
+          <div style={{ fontWeight: step >= 1 ? 'bold' : 'normal', color: step === 1 ? 'var(--primary-500)' : 'inherit' }}>1. Seleção</div>
+          <div>&gt;</div>
+          <div style={{ fontWeight: step >= 2 ? 'bold' : 'normal', color: step === 2 ? 'var(--primary-500)' : 'inherit' }}>2. Revisão</div>
+          <div>&gt;</div>
+          <div style={{ fontWeight: step >= 3 ? 'bold' : 'normal', color: step === 3 ? 'var(--primary-500)' : 'inherit' }}>3. Confirmação</div>
         </div>
 
-        <div className="form-group">
-          <label className="form-label">Tópico de Destino</label>
-          <select 
-            className="form-input form-select"
-            value={topicId}
-            onChange={e => setTopicId(e.target.value ? Number(e.target.value) : '')}
-          >
-            <option value="">Selecione a disciplina...</option>
-            {topics.filter(t => t.level === 1).map(t => (
-              <option key={t.id} value={t.id}>{t.title}</option>
-            ))}
-          </select>
-        </div>
-
-        {importMode === 'csv' && (
-          <div className="form-group">
-            <label className="form-label">Upload de Arquivo (.csv)</label>
-            <input type="file" accept=".csv" onChange={handleFileUpload} className="form-input" style={{ padding: 'var(--space-xs)' }} />
-            <div className="text-xs text-muted mt-sm">
-              Formato esperado (separador ponto-e-vírgula): <br/>
-              <code>Enunciado;A;B;C;D;E;Gabarito;Banca</code>
+        {/* STEP 1 */}
+        {step === 1 && (
+          <div>
+            <div className="tabs mb-md">
+              <button 
+                className={`tab ${importMode === 'csv' ? 'tab--active' : ''}`}
+                onClick={() => setImportMode('csv')}
+              >
+                Arquivo CSV Livre
+              </button>
+              <button 
+                className={`tab ${importMode === 'pdf' ? 'tab--active' : ''}`}
+                onClick={() => setImportMode('pdf')}
+              >
+                PDF Cebraspe
+              </button>
             </div>
+
+            {importMode === 'csv' ? (
+              <div className="form-group">
+                <label className="form-label">Cole o conteúdo do CSV (separado por ;)</label>
+                <textarea 
+                  className="form-input" 
+                  rows={10} 
+                  value={csvText} 
+                  onChange={e => setCsvText(e.target.value)}
+                  placeholder="Enunciado;A;B;C;D;E;Gabarito;Banca"
+                />
+              </div>
+            ) : (
+              <div className="form-group" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-sm)' }}>
+                <div className="alert alert--info">
+                  No modo Cebraspe PDF, os arquivos devem estar acessíveis no disco local. Como as web APIs não expõem o caminho absoluto do arquivo para o Rust, cole o caminho completo do arquivo.
+                </div>
+                <div>
+                  <label className="form-label">Caminho Absoluto do PDF da Prova</label>
+                  <input type="text" className="form-input" value={provaPdfPath} onChange={e => setProvaPdfPath(e.target.value)} placeholder="/home/user/downloads/prova.pdf" />
+                </div>
+                <div>
+                  <label className="form-label">Caminho Absoluto do PDF do Gabarito</label>
+                  <input type="text" className="form-input" value={gabaritoPdfPath} onChange={e => setGabaritoPdfPath(e.target.value)} placeholder="/home/user/downloads/gabarito.pdf" />
+                </div>
+              </div>
+            )}
+
+            <button className="btn btn--primary mt-md" onClick={processFiles} disabled={isLoading || (importMode === 'csv' && !csvText) || (importMode === 'pdf' && (!provaPdfPath || !gabaritoPdfPath))}>
+              {isLoading ? 'Processando...' : 'Avançar para Revisão'}
+            </button>
           </div>
         )}
 
-        {importMode === 'text' && (
-          <div className="alert alert--info mb-md">
-            Cole as questões no formato padrão com alternativas começando por A), B), C)... e finalize o bloco com <strong>Gabarito: A</strong>. Separe as questões por uma linha em branco.
-          </div>
-        )}
-
-        {(importMode === 'text' || (importMode === 'csv' && !csvPreview.length)) && (
-          <div className="form-group">
-            <textarea
-              className="form-input"
-              rows={15}
-              placeholder={importMode === 'text' ? "Enunciado...\nA) Opção A\nB) Opção B\n\nGabarito: B" : 'Ou cole o conteúdo CSV aqui...'}
-              value={inputText}
-              onChange={e => handleTextChange(e.target.value)}
-              style={{ fontFamily: 'monospace' }}
-            />
-          </div>
-        )}
-
-        {importMode === 'csv' && csvPreview.length > 0 && (
-          <div className="mb-md">
-            <h3 className="font-bold mb-sm">Preview ({csvPreview.length} questões identificadas)</h3>
-            <div style={{ maxHeight: '300px', overflowY: 'auto', border: '1px solid var(--border-primary)', borderRadius: 'var(--radius-md)' }}>
-              <table style={{ margin: 0 }}>
-                <thead>
+        {/* STEP 2 */}
+        {step === 2 && (
+          <div>
+            <h3 className="font-bold mb-md">Foram detectadas {previewQuestions.length} questões.</h3>
+            
+            <div style={{ maxHeight: 500, overflowY: 'auto', border: '1px solid var(--border-primary)', borderRadius: 'var(--radius-md)' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
+                <thead style={{ position: 'sticky', top: 0, background: 'var(--surface-50)' }}>
                   <tr>
-                    <th>Enunciado</th>
-                    <th>Gabarito</th>
+                    <th style={{ padding: 'var(--space-sm)', borderBottom: '1px solid var(--border-primary)' }}>
+                      <input type="checkbox" checked={previewQuestions.every(q => q._selected)} onChange={e => setPreviewQuestions(prev => prev.map(q => ({ ...q, _selected: e.target.checked })))} />
+                    </th>
+                    <th style={{ padding: 'var(--space-sm)', borderBottom: '1px solid var(--border-primary)' }}>Enunciado</th>
+                    <th style={{ padding: 'var(--space-sm)', borderBottom: '1px solid var(--border-primary)' }}>Gabarito</th>
+                    <th style={{ padding: 'var(--space-sm)', borderBottom: '1px solid var(--border-primary)' }}>Disciplina Sugerida</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {csvPreview.slice(0, 5).map((q, idx) => (
-                    <tr key={idx}>
-                      <td style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '300px' }}>{q.statement}</td>
-                      <td>{q.correct_answer}</td>
+                  {previewQuestions.map((q, idx) => (
+                    <tr key={idx} style={{ borderBottom: '1px solid var(--border-primary)' }}>
+                      <td style={{ padding: 'var(--space-sm)' }}>
+                        <input type="checkbox" checked={q._selected} onChange={e => {
+                          const newQ = [...previewQuestions];
+                          newQ[idx]._selected = e.target.checked;
+                          setPreviewQuestions(newQ);
+                        }} />
+                      </td>
+                      <td style={{ padding: 'var(--space-sm)', fontSize: '0.9em', maxWidth: 400, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                        {q.statement}
+                      </td>
+                      <td style={{ padding: 'var(--space-sm)' }}>{q.correct_answer}</td>
+                      <td style={{ padding: 'var(--space-sm)' }}>
+                        <select 
+                          className="form-input form-select" 
+                          style={{ padding: '4px', fontSize: '0.85em', borderLeft: `4px solid ${q._confidence! > 0.6 ? 'var(--status-success)' : q._confidence! > 0.3 ? 'var(--status-warning)' : 'var(--status-error)'}` }}
+                          value={q.topic_id || ''}
+                          onChange={e => {
+                            const newQ = [...previewQuestions];
+                            newQ[idx].topic_id = e.target.value ? Number(e.target.value) : undefined;
+                            setPreviewQuestions(newQ);
+                          }}
+                        >
+                          <option value="">(Nenhuma)</option>
+                          {level1Topics.map(t => <option key={t.id} value={t.id}>{t.title}</option>)}
+                        </select>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-            {csvPreview.length > 5 && <div className="text-xs text-muted mt-sm">Mostrando as 5 primeiras questões...</div>}
+
+            <div className="flex gap-md mt-md">
+              <button className="btn btn--ghost" onClick={() => setStep(1)} disabled={isLoading}>Voltar</button>
+              <button className="btn btn--primary" onClick={executeImport} disabled={isLoading || previewQuestions.filter(q => q._selected).length === 0}>
+                {isLoading ? 'Importando...' : `Importar ${previewQuestions.filter(q => q._selected).length} questões`}
+              </button>
+            </div>
           </div>
         )}
 
-        <div className="flex items-center gap-md">
-          <button className="btn btn--primary" onClick={handleImport} disabled={!topicId}>
-            Processar Importação
-          </button>
-          {status && <span className={`text-sm ${status.includes('Erro') || status.includes('Nenhum') ? 'text-error' : 'text-success'}`} style={{ color: status.includes('Erro') || status.includes('Nenhum') ? 'var(--status-error)' : 'var(--status-success)' }}>{status}</span>}
-        </div>
+        {/* STEP 3 */}
+        {step === 3 && importResult && (
+          <div className="text-center p-xl">
+            <h2 className="text-2xl font-bold mb-md" style={{ color: 'var(--status-success)' }}>Importação Concluída!</h2>
+            <div className="mb-lg text-lg">
+              <p>Foram inseridas com sucesso: <strong>{importResult.imported}</strong> questões.</p>
+              {importResult.duplicated > 0 && (
+                <p className="text-warning">Foram ignoradas <strong>{importResult.duplicated}</strong> questões já existentes no banco.</p>
+              )}
+            </div>
+            <button className="btn btn--primary" onClick={() => navigate('/questions')}>
+              Ir para o Banco de Questões
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -52,6 +52,12 @@
       "preload": [
         "sqlite:study.db"
       ]
+    },
+    "updater": {
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDk1QzlEQjhGNUJEOTFEMDcKUldRSEhkbGJqOXZKbGY2cVZ1K0c5YWVlb0lKZWVaMWQ0MVVjaXd4RzBUSFlkVDhyQ1A4MlZjaS8K",
+      "endpoints": [
+        "https://github.com/Andrevictor20/TCE-2026-Desktop/releases/latest/download/updater.json"
+      ]
     }
   }
 }

@@ -13,6 +13,7 @@ const navItems = [
     section: 'Prática',
     items: [
       { to: '/questions', icon: '❓', label: 'Banco de Questões' },
+      { to: '/discovery', icon: '🔍', label: 'Procurar Provas' },
       { to: '/exams', icon: '📝', label: 'Simulados' },
     ],
   },

@@ -9,6 +9,9 @@ export default function Exams() {
   const { history, fetchHistory, startExam } = useExamStore();
   const [loading, setLoading] = useState(false);
   const [questionCount, setQuestionCount] = useState<number | null>(null);
+  const [banca, setBanca] = useState('');
+  const [orgao, setOrgao] = useState('');
+  const [year, setYear] = useState('');
 
   useEffect(() => {
     fetchHistory();
@@ -21,7 +24,11 @@ export default function Exams() {
   const handleStartFull = async () => {
     if (confirm('Iniciar um Simulado Completo? Você terá 5 horas para 100 questões (40 CG, 60 CE).')) {
       setLoading(true);
-      const examId = await startExam('full', 300, 100);
+      const filters: any = {};
+      if (banca) filters.banca = banca;
+      if (orgao) filters.orgao = orgao;
+      if (year) filters.year = Number(year);
+      const examId = await startExam('full', 300, 100, filters);
       setLoading(false);
       if (examId) navigate(`/exams/${examId}`);
       else alert('Erro ao criar simulado. Adicione mais questões ao banco primeiro.');
@@ -32,7 +39,11 @@ export default function Exams() {
     const qCount = prompt('Quantas questões deseja resolver?', '20');
     if (qCount && !isNaN(Number(qCount))) {
       setLoading(true);
-      const examId = await startExam('quick', Number(qCount) * 3, Number(qCount)); // 3 mins per question avg
+      const filters: any = {};
+      if (banca) filters.banca = banca;
+      if (orgao) filters.orgao = orgao;
+      if (year) filters.year = Number(year);
+      const examId = await startExam('quick', Number(qCount) * 3, Number(qCount), filters); // 3 mins per question avg
       setLoading(false);
       if (examId) navigate(`/exams/${examId}`);
       else alert('Erro ao criar simulado.');
@@ -52,6 +63,26 @@ export default function Exams() {
         <div className="alert alert--warning mb-lg">
           <strong>Atenção:</strong> Você ainda não tem questões cadastradas. Vá para o Banco de Questões para importar ou cadastrar antes de iniciar um simulado.
           <br/><button className="btn btn--sm mt-sm" onClick={() => navigate('/questions/import')}>Importar Questões</button>
+        </div>
+      )}
+
+      {questionCount !== 0 && (
+        <div className="card mb-lg">
+          <h2 className="font-bold mb-sm">Filtros Opcionais do Simulado</h2>
+          <div className="flex gap-md">
+            <div>
+              <label className="form-label">Banca</label>
+              <input className="form-input" value={banca} onChange={e => setBanca(e.target.value)} placeholder="Ex: Cebraspe" />
+            </div>
+            <div>
+              <label className="form-label">Órgão</label>
+              <input className="form-input" value={orgao} onChange={e => setOrgao(e.target.value)} placeholder="Ex: TCU" />
+            </div>
+            <div>
+              <label className="form-label">Ano</label>
+              <input type="number" className="form-input" value={year} onChange={e => setYear(e.target.value)} placeholder="Ex: 2024" />
+            </div>
+          </div>
         </div>
       )}
 

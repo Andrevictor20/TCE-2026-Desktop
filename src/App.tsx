@@ -8,9 +8,13 @@ import QuestionImport from './pages/QuestionImport';
 import Exams from './pages/Exams';
 import ExamSession from './pages/ExamSession';
 import ExamResults from './pages/ExamResults';
+import ExamDiscovery from './pages/ExamDiscovery';
 import Notebooks from './pages/Notebooks';
 import Settings from './pages/Settings';
 import './styles/index.css';
+import { check } from '@tauri-apps/plugin-updater';
+import { ask } from '@tauri-apps/plugin-dialog';
+import { relaunch } from '@tauri-apps/plugin-process';
 import { useEffect } from 'react';
 import { usePlannerStore } from './stores/plannerStore';
 
@@ -29,7 +33,27 @@ export default function App() {
         await generatePlan();
       }
     };
+
+    const checkForUpdates = async () => {
+      try {
+        const update = await check();
+        if (update) {
+          const yes = await ask(`Uma nova versão do app está disponível (${update.version}). Deseja instalar agora?`, {
+            title: 'Atualização Disponível',
+            kind: 'info',
+          });
+          if (yes) {
+            await update.downloadAndInstall();
+            await relaunch();
+          }
+        }
+      } catch (error) {
+        console.error("Failed to check for updates:", error);
+      }
+    };
+
     bootPlanner();
+    checkForUpdates();
   }, []);
 
   return (
@@ -59,6 +83,7 @@ export default function App() {
             <Route path="/exams" element={<Exams />} />
             <Route path="/exams/:id" element={<ExamSession />} />
             <Route path="/exams/:id/results" element={<ExamResults />} />
+            <Route path="/discovery" element={<ExamDiscovery />} />
             <Route path="/notebooks" element={<Notebooks />} />
             <Route path="/settings" element={<Settings />} />
           </Routes>
