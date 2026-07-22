@@ -10,6 +10,7 @@ export default function QuestionBank() {
   
   const [search, setSearch] = useState('');
   const [filterTopic, setFilterTopic] = useState<number | ''>('');
+  const [showAnswers, setShowAnswers] = useState(false);
   const [editingQuestion, setEditingQuestion] = useState<Partial<Question> | null>(null);
 
   useEffect(() => {
@@ -96,6 +97,12 @@ export default function QuestionBank() {
             </button>
           </div>
         </div>
+        <div className="flex justify-end mt-sm">
+          <label className="flex items-center gap-sm text-sm" style={{ cursor: 'pointer' }}>
+            <input type="checkbox" checked={showAnswers} onChange={e => setShowAnswers(e.target.checked)} />
+            Mostrar respostas corretas no banco
+          </label>
+        </div>
       </div>
 
       {questions.length === 0 ? (
@@ -136,9 +143,9 @@ export default function QuestionBank() {
                     <div key={letter} style={{ 
                       padding: 'var(--space-xs) var(--space-sm)', 
                       borderRadius: 'var(--radius-sm)',
-                      background: isCorrect ? 'var(--status-success-bg)' : 'transparent',
-                      color: isCorrect ? 'var(--status-success)' : 'inherit',
-                      fontWeight: isCorrect ? 600 : 400
+                      background: (isCorrect && showAnswers) ? 'var(--status-success-bg)' : 'transparent',
+                      color: (isCorrect && showAnswers) ? 'var(--status-success)' : 'inherit',
+                      fontWeight: (isCorrect && showAnswers) ? 600 : 400
                     }}>
                       {letter}) {text}
                     </div>
