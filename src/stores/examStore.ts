@@ -127,6 +127,11 @@ export const useExamStore = create<ExamStore>((set, get) => ({
         // Shuffle
         finalQs.sort(() => Math.random() - 0.5);
 
+        if (finalQs.length === 0) {
+          await execute(`DELETE FROM exams WHERE id = $1`, [examId]);
+          throw new Error('Nenhuma questão encontrada para gerar o simulado. Adicione questões ao banco.');
+        }
+
         for (const q of finalQs) {
           await execute(
             `INSERT INTO exam_answers (exam_id, question_id) VALUES ($1, $2)`,
@@ -137,8 +142,10 @@ export const useExamStore = create<ExamStore>((set, get) => ({
 
       await get().resumeExam(examId);
       return examId;
-    } catch (e) {
+    } catch (e: any) {
       console.error(e);
+      const msg = e.message || String(e);
+      alert(msg.includes('Nenhuma questão') ? msg : 'Erro ao criar simulado: ' + msg);
       return null;
     }
   },
