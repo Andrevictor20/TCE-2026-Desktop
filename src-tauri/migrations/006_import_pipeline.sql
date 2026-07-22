@@ -2,7 +2,7 @@
 ALTER TABLE questions ADD COLUMN source_file TEXT;
 ALTER TABLE questions ADD COLUMN external_id TEXT;
 ALTER TABLE questions ADD COLUMN content_hash TEXT;
-ALTER TABLE questions ADD COLUMN imported_at TEXT DEFAULT (datetime('now'));
+ALTER TABLE questions ADD COLUMN imported_at TEXT;
 
 -- Cria índice único para evitar duplicatas exatas pelo hash
 CREATE UNIQUE INDEX IF NOT EXISTS idx_questions_content_hash ON questions(content_hash);
